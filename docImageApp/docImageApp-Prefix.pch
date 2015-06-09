@@ -1,0 +1,34 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+#import "CommonMacro.h"
+#import "systemVersion.h"
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+  #import <UIKit/UIKit.h>
+  #import <Foundation/Foundation.h>
+#endif
+
+#define NavgationHeight 64
+//#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
+#define kCGImageAlphaPremultipliedFirst  (kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedFirst)
+#else
+#define kCGImageAlphaPremultipliedFirst  kCGImageAlphaPremultipliedFirst
+
+#ifdef __IPHONE_6_0 // iOS6 and later
+#   define UITextAlignmentCenter    NSTextAlignmentCenter
+#   define UITextAlignmentLeft      NSTextAlignmentLeft
+#   define UITextAlignmentRight     NSTextAlignmentRight
+#   define UILineBreakModeTailTruncation     NSLineBreakByTruncatingTail
+#   define UILineBreakModeMiddleTruncation   NSLineBreakByTruncatingMiddle
+#endif
+#endif
